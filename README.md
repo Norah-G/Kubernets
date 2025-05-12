@@ -87,11 +87,8 @@ Below are snapshots from different stages of the deployment process:
 ### 11. Grafana Dashboard
 ![Grafana](images/11.png)
 
-### 12. Fluentd Log Collection
+### 12. Grafana Login & setup
 ![Fluentd Logs](images/12.png)
-
-### 13. Kibana Logs Overview
-![Kibana](images/13.png)
 
 ### 14. Final Working Setup
 ![Final Setup](images/14.png)
