@@ -1,76 +1,108 @@
-Kubernetes Hackathon Lab – Widgetario Deployment
+# Kubernetes Hackathon Lab – Products API Deployment
 
+This repository documents our team's deployment and hardening of the Products API and associated services in a Kubernetes environment during a hackathon lab. The lab aimed to simulate real-world DevOps scenarios and apply Kubernetes best practices in deploying production-ready systems.
 
-This repository showcases our team's successful deployment and hardening of the Widgetario application on Kubernetes as part of a hands-on lab and hackathon. The goal was to simulate real-world deployment challenges and gain practical experience in DevOps, Kubernetes, and production-grade system design.
+## Overview
 
-✅ Achievements
-✔️ Deployed multi-service app: products-db, products-api, stock-api, and web UI
+We successfully deployed a multi-service system consisting of:
 
-✔️ Secured environment variables using ConfigMaps and Secrets
+- `products-db` – a PostgreSQL database
+- `products-api` – an API service exposing product data
+- `stock-api` – a microservice managing stock levels
+- `web-ui` – a frontend interface for interacting with the services
 
-✔️ Integrated persistent storage with StatefulSets and PVCs
+## Key Highlights
 
-✔️ Implemented Ingress routing with DNS simulation and host mapping
+- Environment variables managed using ConfigMaps and Secrets
+- Persistent storage with StatefulSets and PVCs for the database
+- Ingress routing with DNS simulation for seamless access
+- Deployment hardening using liveness and readiness probes, resource limits, and security contexts
+- Full observability using Prometheus, Grafana, and the EFK logging stack
 
-✔️ Hardened deployments with probes, resource limits, and non-root containers
+## Project Structure
 
-✔️ Added observability using Prometheus, Grafana, and centralized logging with the EFK stack
+```
+products-api-deployment/
+├── images/                       # Screenshots from various stages
+│   ├── 1.png
+│   ├── 2.png
+│   └── ... up to 14.png
+├── deployment.yaml              # Kubernetes deployment configuration
+├── config/                      # ConfigMaps and Secrets
+├── ingress/                     # Ingress resources and routing rules
+├── monitoring/                  # Prometheus and Grafana setup
+├── logging/                     # EFK stack configurations
+└── README.md
+```
 
-📦 Project Structure
-bash
-Copy
-Edit
-hackathon/
-├── files/
-│   └── grafana-dashboard.json      # Custom dashboard for monitoring
-├── solution-part-1/                # Base deployment of all services
-├── solution-part-2/                # ConfigMaps and Secrets added
-├── solution-part-3/                # StatefulSet, storage, DB replication
-├── solution-part-4/                # Ingress configuration
-├── solution-part-5/                # Production hardening
-└── scripts/
-    ├── add-to-hosts.ps1
-    └── add-to-hosts.sh             # Local DNS simulation scripts
-🌐 Access Points
-Web UI: http://widgetario.local
+## Access Information
 
-API: http://api.widgetario.local/products
+- Web UI: `http://products.local`
+- Products API: `http://api.products.local/products`
+- Grafana: `http://localhost:3000` (Default: admin/admin)
+- Kibana: `http://localhost:5601`
 
-Grafana: http://localhost:3000 (Default creds: admin/admin)
+Ensure your `/etc/hosts` file is configured to simulate DNS resolution for the local domain.
 
-Kibana: http://localhost:5601
+## Monitoring and Logging
 
-Note: Ensure local /etc/hosts entries are configured for DNS resolution.
+- Prometheus scrapes metrics from the deployed services
+- Grafana visualizes metrics using a custom dashboard
+- Elasticsearch, Fluentd, and Kibana (EFK) aggregate and display logs
 
-📊 Monitoring & Logging
-Prometheus scrapes metrics from app endpoints
+## Hackathon Journey
 
-Grafana visualizes system health via custom dashboards
+Below are snapshots from different stages of the deployment process:
 
-EFK Stack (Elasticsearch, Fluentd, Kibana) aggregates logs from all pods
+### 1. Initial Setup
+![Initial Setup](images/1.png)
 
-💬 Team Notes
-We tackled real-world issues including:
+### 2. Product API Service Deployment
+![Product API Deployment](images/2.png)
 
-Misconfigured environment variables
+### 3. Products DB Configuration
+![Products DB](images/3.png)
 
-Volume mounting errors
+### 4. Persistent Volume Claims
+![PVC Setup](images/4.png)
 
-Liveness/readiness probe tuning
+### 5. ConfigMaps and Secrets
+![Config and Secrets](images/5.png)
 
-Troubleshooting failed rollouts and pending pods
+### 6. Ingress Routing
+![Ingress Routing](images/6.png)
 
-🧠 Lessons Learned
-Effective team collaboration is crucial in DevOps
+### 7. Web UI Deployment
+![Web UI](images/7.png)
 
-YAML syntax precision matters!
+### 8. Liveness and Readiness Probes
+![Probes](images/8.png)
 
-Observability tools are essential for system health
+### 9. Security Context Hardening
+![Security Context](images/9.png)
 
-Kubernetes offers flexibility but requires care in configuration
+### 10. Prometheus Integration
+![Prometheus](images/10.png)
 
-👏 Contributors
-Victoria Mwaura
-Norah Kimathi 
-Joshua Radula 
-Maxwell Opondo
+### 11. Grafana Dashboard
+![Grafana](images/11.png)
+
+### 12. Fluentd Log Collection
+![Fluentd Logs](images/12.png)
+
+### 13. Kibana Logs Overview
+![Kibana](images/13.png)
+
+### 14. Final Working Setup
+![Final Setup](images/14.png)
+
+## Team
+
+- Victoria Mwaura  
+- Norah Kimathi  
+- Joshua Radula  
+- Maxwell Opondo
+
+## Summary
+
+This lab was an opportunity to explore and overcome practical challenges in Kubernetes deployment and system design. We emphasized clean configurations, observability, and security to reflect best practices in real-world DevOps environments.
